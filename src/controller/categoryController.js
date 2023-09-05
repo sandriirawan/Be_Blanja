@@ -83,7 +83,7 @@ const categoryController = {
         res.json({ message: "ID Not Found" });
       } else {
         const result = await deleteCategory(id);
-        commonHelper.response(res, result.rows, 200, "category Success");
+        commonHelper.response(res, result.rows, 200, "Delete Success");
       }
     } catch (error) {
       console.log(error);
