@@ -74,7 +74,7 @@ const paymentController = {
       const result = await insertPayment(data);
       await updateStatusGetPaid(users_id);
 
-      commonHelper.response(res, result.rows, 201, "Berhasil payment");
+      commonHelper.response(res, result.rows, 201, "Payment Successfuly");
     } catch (error) {
       res.status(500).send(error.message);
     }
@@ -88,7 +88,7 @@ const paymentController = {
         return next(createError(403, "ID is Not Found"));
       }
       await deletePayment(id);
-      commonHelper.response(res, {}, 200, "Transaction deleted");
+      commonHelper.response(res, {}, 200, "Payment deleted");
     } catch (error) {
       next(error);
     }

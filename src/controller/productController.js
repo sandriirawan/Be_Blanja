@@ -119,7 +119,7 @@ const productController = {
             res,
             result.rows,
             201,
-            "Berhasil Membuat Product"
+            "Create Product Successfuly"
           )
         )
         .catch((err) => res.send(err));

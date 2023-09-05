@@ -47,7 +47,7 @@ const deliveryController = {
     };
     insertDelivery(data)
       .then((result) =>
-        commonHelper.response(res, result.rows, 201, "Like Success")
+        commonHelper.response(res, result.rows, 201, "Create Success")
       )
       .catch((err) => res.send(err));
   },

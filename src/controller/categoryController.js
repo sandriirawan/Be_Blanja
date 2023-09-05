@@ -68,7 +68,7 @@ const categoryController = {
     };
     insertCategory(data)
       .then((result) =>
-        commonHelper.response(res, result.rows, 201, "Like Success")
+        commonHelper.response(res, result.rows, 201, "category Success")
       )
       .catch((err) => res.send(err));
   },
@@ -83,7 +83,7 @@ const categoryController = {
         res.json({ message: "ID Not Found" });
       } else {
         const result = await deleteCategory(id);
-        commonHelper.response(res, result.rows, 200, "Delete like Success");
+        commonHelper.response(res, result.rows, 200, "category like Success");
       }
     } catch (error) {
       console.log(error);

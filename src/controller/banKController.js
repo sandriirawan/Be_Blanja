@@ -58,7 +58,7 @@ const bankController = {
     };
     insertBank(data)
       .then((result) =>
-        commonHelper.response(res, result.rows, 201, "Like Success")
+        commonHelper.response(res, result.rows, 201, "bank Success")
       )
       .catch((err) => res.send(err));
   },
@@ -72,7 +72,7 @@ const bankController = {
         res.json({ message: "ID Not Found" });
       } else {
         const result = await deleteBank(id);
-        commonHelper.response(res, result.rows, 200, "Delete like Success");
+        commonHelper.response(res, result.rows, 200, "Delete bank Success");
       }
     } catch (error) {
       console.log(error);

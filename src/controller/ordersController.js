@@ -198,7 +198,7 @@ const ordersController = {
             res,
             result.rows,
             201,
-            "Berhasil Membuat Product"
+            "Create Order Successfuly"
           )
         )
         .catch((err) => res.send(err));
@@ -221,7 +221,7 @@ const ordersController = {
       };
       updateOrders(data)
         .then((result) =>
-          commonHelper.response(res, result.rows, 200, "Product updated")
+          commonHelper.response(res, result.rows, 200, "Order updated")
         )
         .catch((err) => res.send(err));
     } catch (error) {
@@ -237,7 +237,7 @@ const ordersController = {
         return next(createError(403, "ID is Not Found"));
       }
       await deleteOrders(id);
-      commonHelper.response(res, {}, 200, "Product deleted");
+      commonHelper.response(res, {}, 200, "Order deleted");
     } catch (error) {
       next(error);
     }

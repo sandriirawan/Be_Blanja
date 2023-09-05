@@ -94,7 +94,7 @@ const addressController = {
             res,
             result.rows,
             201,
-            "Berhasil Membuat Address"
+            "Create Address Successfuly"
           )
         )
         .catch((err) => res.send(err));

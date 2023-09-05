@@ -143,7 +143,7 @@ const custommerController = {
       }
       deleteCustommer(id)
         .then((result) =>
-          commonHelper.response(res, result.rows, 200, "Delete Users Success")
+          commonHelper.response(res, result.rows, 200, "Delete Success")
         )
         .catch((err) => res.send(err));
     } catch (error) {
