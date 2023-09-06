@@ -106,6 +106,6 @@ API endpoint list are also available as published postman documentation
 
 :rocket: [`Frontend Blanja`](https://github.com/sandriirawan/Be_Blanja)
 
-:rocket: [`Demo Blanja`]()
+:rocket: [`Demo Blanja`](https://blanja-delta.vercel.app/home)
 
 Project link : [https://github.com/sandriirawan/Fe_Blanja_React](https://github.com/sandriirawan/Fe_Blanja_React)]
