@@ -7,9 +7,9 @@
   <p align="center">
     <a href="https://github.com/sandriirawan/Be_Blanja"><strong>Explore the docs »</strong></a>
     <br />
-<!--     <a href="https://blanja-fe-khaki.vercel.app/">View Demo</a>
+  <a href="https://be-blanja.vercel.app/">View Demo</a>
     ·
-    <a href="https://blanja-be-alpha.vercel.app/">Api Demo</a> -->
+    <a href="https://be-blanja.vercel.app/">Api Demo</a> -->
   </p>
 </p>
 
@@ -98,7 +98,7 @@ Documentation files are provided in the [docs](./docs) folder
 
 API endpoint list are also available as published postman documentation
 
-[![Run in Postman](https://run.pstmn.io/button.svg)]()
+[![Run in Postman](https://run.pstmn.io/button.svg)](https://documenter.getpostman.com/view/27920982/2s9YBxYbPi)
 
 ## Related Project
 
@@ -106,6 +106,6 @@ API endpoint list are also available as published postman documentation
 
 :rocket: [`Frontend Blanja`](https://github.com/sandriirawan/Be_Blanja)
 
-:rocket: [`Demo Blanja`]()
+:rocket: [`Demo Blanja`](https://blanja-delta.vercel.app/home)
 
 Project link : [https://github.com/sandriirawan/Fe_Blanja_React](https://github.com/sandriirawan/Fe_Blanja_React)]
