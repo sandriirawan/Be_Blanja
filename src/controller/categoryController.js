@@ -19,7 +19,8 @@ const categoryController = {
       const offset = (page - 1) * limit;
       const sortby = req.query.sortby || "id";
       const sort = req.query.sort || "ASC";
-      const result = await selectAllCategory({ limit, offset, sort, sortby });
+      const search = req.query.search || "";
+      const result = await selectAllCategory({search, limit, offset, sort, sortby });
       const {
         rows: [count],
       } = await countData();

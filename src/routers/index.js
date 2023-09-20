@@ -1,5 +1,6 @@
 const express = require('express')
 const router = express.Router()
+const adminRouter = require('./adminRouter')
 const custommerRouter = require('./custommerRouter')
 const sellerRouter = require('./sellerRouter')
 const categoryRouter = require("./categoryRouter")
@@ -13,6 +14,7 @@ const addressRouter = require("./addressRouter")
 
 
 router
+.use('/admin', adminRouter)
 .use('/custommer', custommerRouter)
 .use('/seller', sellerRouter)
 .use('/category', categoryRouter)

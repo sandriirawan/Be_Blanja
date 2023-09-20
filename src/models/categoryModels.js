@@ -1,8 +1,8 @@
 const Pool = require("../config/db");
 
-const selectAllCategory = ({ limit, offset, sort, sortby }) => {
+const selectAllCategory = ({ search, limit, offset, sort, sortby }) => {
   return Pool.query(
-    `SELECT * FROM category ORDER BY ${sortby} ${sort} LIMIT ${limit} OFFSET ${offset}`
+    `SELECT * FROM category WHERE name ILIKE '%${search}%' ORDER BY ${sortby} ${sort} LIMIT ${limit} OFFSET ${offset}`
   );
 };
 
@@ -14,7 +14,7 @@ const selectCategory = (id) => {
 
 // INSERT Coments
 const insertCategory = (data) => {
-  const { id, name,category_photo } = data;
+  const { id, name, category_photo } = data;
   return Pool.query(
     `INSERT INTO category (id, name, category_photo) 
     VALUES('${id}', '${name}','${category_photo}' )`
@@ -46,8 +46,6 @@ const findID = (id) => {
     )
   );
 };
-
-
 
 module.exports = {
   selectAllCategory,

@@ -1,9 +1,9 @@
 const Pool = require("../config/db");
 
 //GET ALL SELLER
-const selectAllSeller = ({ limit, offset, sort, sortby }) => {
+const selectAllSeller = ({search, limit, offset, sort, sortby }) => {
   return Pool.query(
-    `SELECT * FROM seller ORDER BY ${sortby} ${sort} LIMIT ${limit} OFFSET ${offset}`
+    `SELECT * FROM seller WHERE store_name ILIKE '%${search}%' ORDER BY ${sortby} ${sort} LIMIT ${limit} OFFSET ${offset}`
   );
 };
 

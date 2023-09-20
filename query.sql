@@ -1,4 +1,4 @@
--- Active: 1693929640533@@147.139.210.135@5432@sandri01
+-- Active: 1694633081302@@147.139.210.135@5432@sandri01
 
 CREATE TABLE
     custommer (
@@ -22,6 +22,15 @@ CREATE TABLE
         store_name VARCHAR(255),
         store_description TEXT,
         photo VARCHAR(255),
+        role VARCHAR(255)
+    )
+
+    CREATE TABLE
+    admin (
+        id VARCHAR PRIMARY KEY,
+        name VARCHAR(255),
+        email VARCHAR(255) NOT NULL,
+        password VARCHAR(255) NOT NULL,
         role VARCHAR(255)
     )
 

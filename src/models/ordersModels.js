@@ -1,10 +1,11 @@
 const Pool = require("../config/db");
 
-const selectAllOrders = ({ limit, offset, sort, sortby }) => {
+const selectAllOrders = ({search, limit, offset, sort, sortby }) => {
   return Pool.query(`
   SELECT orders.*, product.product_name, product.photo_product, product.price
   FROM orders
   LEFT JOIN product ON orders.product_id = product.id
+  WHERE status_orders ILIKE '%${search}%'
   ORDER BY ${sortby} ${sort} LIMIT ${limit} OFFSET ${offset}`);
 };
 

@@ -6,15 +6,11 @@ const authHelper = require("../helper/auth");
 const commonHelper = require("../helper/common");
 const cloudinary = require("../middlewares/cloudinary");
 const {
-  selectAllCustommer,
-  selectCustommer,
-  deleteCustommer,
-  createCustommer,
-  updateCustommer,
-  findUUID,
+  selectAllAdmin,
+  createAdmin,
   findEmail,
   countData,
-} = require("../models/custommerModels");
+} = require("../models/adminModels");
 
 const registerValidationSchema = Joi.object({
   name: Joi.string().required(),
@@ -22,7 +18,7 @@ const registerValidationSchema = Joi.object({
   password: Joi.string().min(8).required(),
 });
 
-const custommerController = {
+const adminController = {
   getAll: async (req, res) => {
     try {
       const page = Number(req.query.page) || 1;
@@ -31,7 +27,7 @@ const custommerController = {
       const sortby = req.query.sortby || "id";
       const sort = req.query.sort || "ASC";
       const search = req.query.search || "";
-      const result = await selectAllCustommer({ search,limit, offset, sort, sortby });
+      const result = await selectAllAdmin({ search,limit, offset, sort, sortby });
       const {
         rows: [{ count }],
       } = await countData();
@@ -56,29 +52,12 @@ const custommerController = {
     }
   },
 
-  getById: async (req, res) => {
-    try {
-      const id = String(req.params.id);
-      const { rowCount } = await findUUID(id);
-      if (!rowCount) {
-        return res.json({ message: "ID Not Found" });
-      }
-      const result = await selectCustommer(id);
-      commonHelper.response(res, result.rows, 200, "Get Detail Success");
-    } catch (err) {
-      console.error(err);
-      res.status(500).send(err.message);
-    }
-  },
 
   register: async (req, res) => {
     try {
       const id = uuidv4();
-      const { email, name, phone, password, gender, photo } = req.body;
-  
-
+      const { email, name, password} = req.body;
       const passwordHash = bcrypt.hashSync(password);
-
       const { rowCount } = await findEmail(email);
       if (rowCount) {
         return res.json({ message: "Email Already Taken" });
@@ -88,12 +67,9 @@ const custommerController = {
         id,
         name,
         email,
-        phone: phone || "",
         passwordHash,
-        gender: gender || "",
-        photo: photo || "",
       };
-      const result = await createCustommer(data);
+      const result = await createAdmin(data);
       commonHelper.response(res, result.rows, 201, "Create Success");
     } catch (err) {
       console.error(err);
@@ -101,56 +77,8 @@ const custommerController = {
     }
   },
 
-  update: async (req, res) => {
-    try {
-      const id = String(req.params.id);
-      const { rowCount } = await findUUID(id);
-      if (!rowCount) {
-        res.json({ message: "ID Not Found" });
-      }
-      const getUserId = await selectCustommer(id);
-      const user = getUserId.rows[0];
-      const { file } = req;
-      let photo = user.photo;
-      if (file && file.path) {
-        const result = await cloudinary.uploader.upload(file.path);
-        photo = result.secure_url;
-      }
-      const { email, name, phone } = req.body;
-      const data = {
-        id,
-        name: name || user.name,
-        email: email || user.email,
-        phone: phone || user.phone,
-        photo: photo || user.photo,
-      };
+ 
 
-      updateCustommer(data)
-        .then((result) =>
-          commonHelper.response(res, result.rows, 200, "Update Success")
-        )
-        .catch((err) => res.send(err));
-    } catch (error) {
-      console.log(error);
-    }
-  },
-
-  delete: async (req, res) => {
-    try {
-      const id = String(req.params.id);
-      const { rowCount } = await findUUID(id);
-      if (!rowCount) {
-        res.json({ message: "ID Not Found" });
-      }
-      deleteCustommer(id)
-        .then((result) =>
-          commonHelper.response(res, result.rows, 200, "Delete Success")
-        )
-        .catch((err) => res.send(err));
-    } catch (error) {
-      console.log(error);
-    }
-  },
 
   login: async (req, res) => {
     const { email, password } = req.body;
@@ -186,4 +114,5 @@ const custommerController = {
     commonHelper.response(res, result, 200);
   },
 };
-module.exports = custommerController;
+
+module.exports = adminController;

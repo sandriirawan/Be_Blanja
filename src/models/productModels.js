@@ -10,8 +10,10 @@ const selectAllProduct = ({ limit, offset, sort, sortby }) => {
 
 const searchProduct = ({ search }) => {
   return Pool.query(`
-    SELECT *
-    FROM product WHERE product_name ILIKE '%${search}%'
+  SELECT product.*, seller.store_name
+  FROM product
+  LEFT JOIN seller ON product.users_id = seller.id
+   WHERE product_name ILIKE '%${search}%'
    `);
 };
 

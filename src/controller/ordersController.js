@@ -30,7 +30,9 @@ const ordersController = {
       const offset = (page - 1) * limit;
       const sortby = req.query.sortby || "id";
       const sort = req.query.sort || "ASC";
+      const search = req.query.search || "";
       const result = await selectAllOrders({
+        search,
         limit,
         offset,
         sort,
