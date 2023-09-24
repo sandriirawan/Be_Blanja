@@ -8,6 +8,7 @@ const {
   searchProduct,
   selectProductById,
   selectProductByUserId,
+  selectProductByCategoryId,
   insertProduct,
   updateProduct,
   deleteProduct,
@@ -74,6 +75,15 @@ const productController = {
     try {
       const users_id = String(req.params.users_id);
       const result = await selectProductByUserId(users_id);
+      commonHelper.response(res, result.rows, 200, "get data success");
+    } catch (err) {
+      res.send(err);
+    }
+  },
+  getProductByCategoryId: async (req, res, next) => {
+    try {
+      const category_id = String(req.params.category_id);
+      const result = await selectProductByCategoryId(category_id);
       commonHelper.response(res, result.rows, 200, "get data success");
     } catch (err) {
       res.send(err);

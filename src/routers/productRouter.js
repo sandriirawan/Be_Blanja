@@ -7,6 +7,7 @@ router
   .post("/", uploadProduct, productController.insert)
   .get("/", productController.getAll)
   .get("/search-product", productController.search)
+  .get("/category/:category_id", productController.getProductByCategoryId)
   .get("/:id", productController.getProductById)
   .get("/users/:users_id", productController.getProductByUserId)
   .put("/:id", uploadProduct, productController.update)

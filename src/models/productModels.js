@@ -33,6 +33,14 @@ const selectProductByUserId = (users_id) => {
     WHERE product.users_id = '${users_id}'`);
 };
 
+const selectProductByCategoryId = (category_id) => {
+  return Pool.query(`
+    SELECT product.*, seller.store_name
+    FROM product
+    LEFT JOIN seller ON product.users_id = seller.id
+    WHERE product.category_id = '${category_id}'`);
+};
+
 const insertProduct = (data) => {
   const {
     id,
@@ -119,6 +127,7 @@ module.exports = {
   searchProduct,
   selectProductById,
   selectProductByUserId,
+  selectProductByCategoryId,
   insertProduct,
   updateStock,
   updateProduct,
